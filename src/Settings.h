@@ -3,10 +3,13 @@
 #include "SettingsBase.h"
 #include "WiFi.h"
 #include "TempSetter.h"
+#include "InfluxDBCollector.h"
+
 
 struct SettingsData {
     NetworkSettings network;
     TempSettings temp1Settings;
+    InfluxDBCollectorSettings influxDB;
 };
 
 struct Empty {};

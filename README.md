@@ -7,7 +7,6 @@ The hardware is an ESP8266 with attached:
 2) A relay that simulates the X40 thermostat (connection points 40 & 41)
 3) DS18B20 sensor that monitors the heating fluid temperature
 
-
 OTA updates is supported through POST requests to the /update API.
 
 ## Building the project

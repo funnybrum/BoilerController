@@ -4,9 +4,11 @@ Logger logger = Logger();
 Settings settings = Settings();
 
 WiFiManager wifi = WiFiManager(&logger, &settings.getSettings()->network);
+DataCollector dataCollector = DataCollector();
 WebServer webServer = WebServer(&logger, &settings.getSettings()->network);
 TempSetter ufhTemp = TempSetter(&settings.getSettings()->temp1Settings, D1, 1, "UFH temperature");
 Relay ufhRelay = Relay(D3, 30);
+DS18B20 ufhTempSensor = DS18B20(D7);
 
 
 void setup()
@@ -15,8 +17,10 @@ void setup()
     settings.begin();
     ufhTemp.begin();
     ufhRelay.begin();
+    ufhTempSensor.begin();
     wifi.begin();
     webServer.begin();
+    dataCollector.begin();
 
     wifi.connect();
 }
@@ -27,10 +31,8 @@ void loop() {
     settings.loop();
     ufhTemp.loop();
     ufhRelay.loop();
-
-    if (wifi.isInAPMode() && millis() > 300000L) {
-        ESP.reset();
-    }
+    ufhTempSensor.loop();
+    dataCollector.loop();
 
     delay(100);
 }

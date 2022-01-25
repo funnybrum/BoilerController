@@ -14,9 +14,7 @@ void TempSetter::begin() {
 }
 
 void TempSetter::loop() {
-    bool change = false;
     if (_targetTemp != _currentTemp) {
-        change = true;
         _currentTemp = _targetTemp;
         _servo->attach(_pin, 350, 2600, tempToMs(_targetTemp));
 
@@ -80,14 +78,14 @@ void TempSetter::get_config_page(char* buffer) {
 
 void TempSetter::parse_config_params(WebServerBase* webServer) {
     if (_index == 1) {
-        webServer->process_setting("f1_low_temp", _settings->lowTemp);    
-        webServer->process_setting("f1_low_temp_ms", _settings->lowTempMs);    
-        webServer->process_setting("f1_high_temp", _settings->highTemp);    
-        webServer->process_setting("f1_high_temp_ms", _settings->highTempMs);
+        webServer->process_setting("t1_low_temp", _settings->lowTemp);    
+        webServer->process_setting("t1_low_temp_ms", _settings->lowTempMs);    
+        webServer->process_setting("t1_high_temp", _settings->highTemp);    
+        webServer->process_setting("t1_high_temp_ms", _settings->highTempMs);
     } else if (_index == 2) {
-        webServer->process_setting("f2_low_temp", _settings->lowTemp);    
-        webServer->process_setting("f2_low_temp_ms", _settings->lowTempMs);    
-        webServer->process_setting("f2_high_temp", _settings->highTemp);    
-        webServer->process_setting("f2_high_temp_ms", _settings->highTempMs);
+        webServer->process_setting("t2_low_temp", _settings->lowTemp);    
+        webServer->process_setting("t2_low_temp_ms", _settings->lowTempMs);    
+        webServer->process_setting("t2_high_temp", _settings->highTemp);    
+        webServer->process_setting("t2_high_temp_ms", _settings->highTempMs);
     }
 }

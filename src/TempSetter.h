@@ -11,9 +11,9 @@ Low temperature:<br>
 Low temperature pulse (ms, i.e. 350):<br>
 <input type="text" name="t%d_low_temp_ms" value="%d"><br>
 High temperature:<br>
-<input type="text" name="t%d_low_temp" value="%d"><br>
+<input type="text" name="t%d_high_temp" value="%d"><br>
 High temperature pulse (ms, i.e. 2600):<br>
-<input type="text" name="t%d_low_temp_ms" value="%d"><br>
+<input type="text" name="t%d_high_temp_ms" value="%d"><br>
 </fieldset>
 )=====";
 

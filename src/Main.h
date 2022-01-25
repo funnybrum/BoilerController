@@ -11,6 +11,8 @@
 
 #include "Relay.h"
 #include "TempSetter.h"
+#include "DS18B20.h"
+#include "DataCollector.h"
 
 #include "esp8266-base.h"
 
@@ -23,3 +25,5 @@ extern Settings settings;
 extern WiFiManager wifi;
 extern TempSetter ufhTemp;
 extern Relay ufhRelay;
+extern DS18B20 ufhTempSensor;
+extern DataCollector dataCollector;
