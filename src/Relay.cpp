@@ -3,6 +3,7 @@
 
 Relay::Relay(uint8_t pin, uint16_t onDelay) {
     this->_pin = pin;
+    this->_onDelay = onDelay;
 }
 
 void Relay::begin() {

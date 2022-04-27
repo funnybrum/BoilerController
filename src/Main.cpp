@@ -7,7 +7,7 @@ WiFiManager wifi = WiFiManager(&logger, &settings.getSettings()->network);
 DataCollector dataCollector = DataCollector();
 WebServer webServer = WebServer(&logger, &settings.getSettings()->network);
 TempSetter ufhTemp = TempSetter(&settings.getSettings()->temp1Settings, D1, 1, "UFH temperature");
-Relay ufhRelay = Relay(D3, 30);
+Relay ufhRelay = Relay(D3, 180);
 DS18B20 ufhTempSensor = DS18B20(D7);
 
 
