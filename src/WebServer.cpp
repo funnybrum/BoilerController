@@ -3,7 +3,7 @@
 char buffer[4096];
 
 WebServer::WebServer(Logger* logger, NetworkSettings* networkSettings)
-    :WebServerBase(networkSettings, logger, systemCheck) {
+    :WebServerBase(networkSettings, logger) {
 }
 
 void WebServer::registerHandlers() {
@@ -64,6 +64,7 @@ void WebServer::handle_ufh_temp() {
 }
 
 void WebServer::handle_ufh_on() {
+    logger->log("ON request from %s", server->client().remoteIP().toString().c_str());
     ufhRelay.on();
     server->send(200);
 }
@@ -77,7 +78,10 @@ void WebServer::handle_get() {
     sprintf_P(buffer,
               GET_JSON,
               ufhRelay.isOn()?"true":"false",
-              ufhTemp.getTemp(),
-              ufhTempSensor.getTemp());
+              bufferTempSensors.getBufferSupplyTemp(),
+              bufferTempSensors.getBufferReturnTemp(),
+              bufferTempSensors.getUFHSupplyTemp(),
+              bufferTempSensors.getUFHReturnTemp(),
+              WiFi.RSSI());
     server->send(200, "application/json", buffer);
 }

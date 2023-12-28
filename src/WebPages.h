@@ -23,6 +23,9 @@ const char CONFIG_PAGE[] PROGMEM = R"=====(
 
 const char GET_JSON[] PROGMEM = R"=====({
  "heating":%s,
- "target_temp":%d,
- "actual_temp": %.1f
+ "buffer_supply_temp": %.1f,
+ "buffer_return_temp": %.1f,
+ "ufh_supply_temp": %.1f,
+ "ufh_return_temp": %.1f,
+ "rssi": %d
 })=====";

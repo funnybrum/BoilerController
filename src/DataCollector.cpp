@@ -9,21 +9,24 @@ DataCollector::DataCollector():
 }
 
 bool DataCollector::shouldCollect() {
-    return 0 < ufhTempSensor.getTemp() && ufhTempSensor.getTemp() < 80;
+    return 0 < bufferTempSensors.getBufferSupplyTemp();
 }
 
 void DataCollector::collectData() {
-    append("set_temp", ufhTemp.getTemp());
-    append("actual_temp", ufhTempSensor.getTemp(),1);
-    append("min_temp", ufhTempSensor.getTempMin(),1);
-    append("max_temp", ufhTempSensor.getTempMax(),1);
+    append("buffer_supply", bufferTempSensors.getBufferSupplyTemp(),1);
+    append("buffer_return", bufferTempSensors.getBufferReturnTemp(),1);
+    append("ufh_supply", bufferTempSensors.getUFHSupplyTemp(),1);
+    append("ufh_return", bufferTempSensors.getUFHReturnTemp(),1);
     append("heating", ufhRelay.isOn(), 0);
-    ufhTempSensor.reset();
 }
 
 bool DataCollector::shouldPush() {
     return false;
 }   
 
-void DataCollector::onPush() {
+void DataCollector::beforePush() {
+    append("rssi", WiFi.RSSI(), 0);
+}
+
+void DataCollector::afterPush() {
 }

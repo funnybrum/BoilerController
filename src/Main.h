@@ -25,5 +25,5 @@ extern Settings settings;
 extern WiFiManager wifi;
 extern TempSetter ufhTemp;
 extern Relay ufhRelay;
-extern DS18B20 ufhTempSensor;
+extern DS18B20 bufferTempSensors;
 extern DataCollector dataCollector;
